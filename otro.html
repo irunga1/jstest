@@ -46,7 +46,7 @@
                 "time":date
             };
             console.log(pos)
-            url  = "http://localhost:3000/entrega/insert?" + new URLSearchParams(pos);
+            url  = "https://personapi-e7s3.onrender.com/entrega/insert?" + new URLSearchParams(pos);
             console.log(url);
             $.get( url, function(data) {
                 console.log(data);
@@ -77,7 +77,7 @@
     <br>
     http://localhost:3002
     <br>
-    <form action="http://localhost:3000/entrega/insert" method="get">
+    <form action="https://personapi-e7s3.onrender.com" method="get">
         <input type="text" name="lat" value ="14">
         <input type="text" name="lon" value ="-90">
         <input type="text" name="idpaquete" value ="1">
