@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+		
+    <script>
+
+
+
+        function getLocation() {   
+            
+            if (navigator.geolocation) {
+                pos = navigator.geolocation.getCurrentPosition(showPosition);
+                
+            } else { 
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        
+        function showPosition(position) {
+            // console.log("Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude);
+            var dateObj = new Date();
+            var month = dateObj.getUTCMonth() + 1; //months from 1-12
+            var day = dateObj.getUTCDate();
+            var year = dateObj.getUTCFullYear(); 
+            var hour = dateObj.getHours();
+            var min = dateObj.getMinutes();
+            date = year+"-"+month+"-"+day+" "+hour+":"+min;
+            var pos = {
+                "lat":position.coords.latitude,
+                "lon":position.coords.longitude,
+                "idmensajero":1,
+                "idpaquete":1,
+                "date":date,
+                "time":date
+            };
+            console.log(pos)
+            url  = "http://localhost:3000/entrega/insert?" + new URLSearchParams(pos);
+            console.log(url);
+            $.get( url, function(data) {
+                console.log(data);
+            })
+
+            // fetch('http://localhost:3000/entrega/insert', {
+            //     method: 'GET',
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     },
+            //     body: JSON.stringify(pos)
+            // })
+            // .then(res => res.json())
+            // .then(res=> {
+            //     console.log(res);
+            // });
+
+
+            
+            
+        }
+
+        
+        setInterval(getLocation,10000);
+
+    </script>
+    https://personapi-e7s3.onrender.com
+    <br>
+    http://localhost:3002
+    <br>
+    <form action="http://localhost:3000/entrega/insert" method="get">
+        <input type="text" name="lat" value ="14">
+        <input type="text" name="lon" value ="-90">
+        <input type="text" name="idpaquete" value ="1">
+        <input type="text"  name="idmensajero" value ="1">
+        <button type="">enviar</button>
+    </form>
+
+</body>
+</html>
