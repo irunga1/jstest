@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #chatContainer {
+          width: 500px;
+          height: 300px;
+          margin: 0 auto;
+          padding: 10px;
+          background-color: lightgray;
+          border-radius: 10px;
+        }
+        
+        #chatbotResponse {
+          font-size: 20px;
+          padding: 10px;
+          margin-bottom: 10px;
+          background-color: white;
+          border-radius: 10px;
+        }
+        
+        #userInput {
+          width: 100%;
+          height: 50px;
+          font-size: 20px;
+          padding: 10px;
+          border-radius: 10px;
+          border: none;
+        }
+      </style>
+</head>
+<script>
+    // Comprueba si la memoria del chatbot existe en localStorage
+    if (!localStorage.getItem("chatbotMemory")) {
+      // Si no existe, crea la memoria del chatbot como un objeto vacío
+      localStorage.setItem("chatbotMemory", JSON.stringify({}));
+    }
+    
+    // Función que determina la respuesta del chatbot
+    function chatbotResponse() {
+      // Obtiene la entrada del usuario desde el campo de entrada de texto
+      var input = document.getElementById("userInput").value;
+      
+      // Recupera la memoria del chatbot desde localStorage
+      var chatbotMemory = JSON.parse(localStorage.getItem("chatbotMemory"));
+      
+      // Comprueba si la entrada del usuario está en la memoria del chatbot
+      if (chatbotMemory.hasOwnProperty(input)) {
+        // Si la entrada está en la memoria, el chatbot responde con la respuesta previamente aprendida
+        document.getElementById("chatbotResponse").innerHTML = chatbotMemory[input];
+      } else {
+        // Si la entrada no está en la memoria, el chatbot responde diciendo que no entiende la entrada
+        document.getElementById("chatbotResponse").innerHTML = "Lo siento, no entiendo lo que estás diciendo. ¿Podrías enseñármelo?";
+        
+        // El chatbot pregunta al usuario qué respuesta es la correcta para la entrada
+        var response = prompt("¿Cuál es la respuesta correcta para \"" + input + "\"?");
+        
+        // El chatbot agrega la respuesta a su memoria y guarda la memoria en localStorage
+        chatbotMemory[input] = response;
+        localStorage.setItem("chatbotMemory", JSON.stringify(chatbotMemory));
+      }
+    }
+  </script>
+<body>
+    <div id="chatContainer">
+        <!-- La respuesta del chatbot se muestra aquí -->
+        <div id="chatbotResponse">Bienvenido al chatbot. ¿En qué puedo ayudarte hoy?</div>
+        <!-- El usuario ingresa su entrada aquí -->
+        <input type="text" id="userInput" onblur="chatbotResponse()">
+      </div>
+</body>
+</html>

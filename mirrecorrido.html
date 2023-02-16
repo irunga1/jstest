@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd3z2e3JwYSNNl0kjXDnX3TTNaemr60gc&callback=initMap">
+    </script> -->    
+</head>
+<style>
+    #map {
+	    height: 500px;
+	    width: 100%;
+    }
+</style>
+<body>
+    <div id="map"></div>
+    <script     src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" ></script>
+    <script>    
+    var url = "https://personapi-e7s3.onrender.com/entrega/getall";
+    var content
+
+    // async function myAjax() {
+    //     const result = await $.ajax({
+    //         url: url,
+    //         type: 'GET',
+            
+    //     })
+    //     console.log(result);
+    //     return await result;
+    // }
+
+
+
+    
+
+    async function iniciarMap(){
+        var coord = await $.ajax({
+            url: url,
+            type: 'GET'
+        });
+        
+        a =  coord.info;
+        
+        var tempo = [];
+        for(i = 0;i<a.length;i++){
+            var lat = parseFloat(a[i].lat);
+            var lng = parseFloat(a[i].lon);
+            let obj = {"lat":lat,"lng":lng};
+            tempo[i] = obj;
+        }
+        var tempo2 =[];
+        for(i = 0;i<tempo.length;i++){
+            let tmp = ["recorrido",tempo[i].lat,tempo[i].lng];
+            tempo2[i]= tmp;
+        }
+        
+        console.log(tempo);
+        var coord1 = tempo[0];
+        var coord2 = tempo;
+        var map = new google.maps.Map(document.getElementById('map'),{
+            zoom: 10,
+            center: coord1
+        });
+        
+            var marker = new google.maps.Marker({
+                position: coord1,
+                map: map
+            });
+            var marker = new google.maps.Marker({
+                position: coord2[1],
+                map: map
+            });
+            var marker = new google.maps.Marker({
+                position: coord2[10],
+                map: map
+            });
+            var marker = new google.maps.Marker({
+                position: coord2[11],
+                map: map
+            });
+            var marker = new google.maps.Marker({
+                position: coord2[13],
+                map: map
+            });
+        
+
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+
+</body>
+</html>
