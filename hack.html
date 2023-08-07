@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class GetData  {
+            constructor(firstProp = null) {
+                this.firstProp = firstProp
+            }
+            info = async()=>{
+                let url = "http://127.0.0.1:8888/fake.php?hola=mundo";
+                var api = await fetch(url);
+                console.log(api);
+                return await api;
+            }
+            passinfo = async ()=>{
+                var info = await this.info();
+                console.log(info);
+                return await info;
+            }
+        }
+        var obj = new GetData()
+        var data =  obj.passinfo();
+    </script>
+    
+
+</body>
+</html>

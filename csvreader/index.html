@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CSVReader</h1>
+    <script>
+        class csvreader {
+            constructor(path) {
+                this.path = path
+            }
+            reader = async()=>{
+                let path = this.path;
+                let info = await fetch(path);
+                let data  = await info.text();
+                console.log(data);
+            }
+        }
+        const obj = new csvreader("info.csv");
+        obj.reader();
+    </script>
+</body>
+</html>

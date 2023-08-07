@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+        function saludo(name){            
+            console.log(`hola ${name}`);
+        }
+        function holaAdios(cb,name){
+            cb(name);
+            console.log(`adios ${name}`);
+
+        }
+        holaAdios(saludo,"Juan");
+
+        function execCallback(callback){
+            setTimeout(callback,2000,"Juancho")
+            
+        }
+
+        function one(name) {
+            return `hola ${name}`
+        }
+        execCallback(one);
+
+    </script>
+
+</body>
+</html>

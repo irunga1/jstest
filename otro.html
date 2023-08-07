@@ -46,7 +46,9 @@
                 "time":date
             };
             console.log(pos)
-            url  = "http://localhost:3000/entrega/insert?" + new URLSearchParams(pos);
+
+            // let url = "http://localhost:3000/entrega/insert?" + new URLSearchParams(pos);
+            let url = "https://personapi-e7s3.onrender.com/entrega/insert?" + new URLSearchParams(pos);
             console.log(url);
             $.get( url, function(data) {
                 console.log(data);

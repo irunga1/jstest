@@ -20,7 +20,7 @@
                     Insert your text
                 </label>                
                 <input  id="text" type="text" value="" style="width:80%" placeholder="Generate QR code" /><br />
-                <button onclick="obj.getQR()">Generate</button>
+                <button class ="btn btn-warning" onclick="obj.getQR()">Generate</button>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -39,9 +39,9 @@
 
     
     <style>
-        #qrcode {
-            width:160px;
-            height:160px;
+        #qrcode img {
+            width: 150px;
+            height:150px;
             margin-top:15px;
         }
         .txtCenter h1{
@@ -49,8 +49,6 @@
         }
 
     </style>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 <script>    
     class qrGen {
@@ -77,16 +75,20 @@
             qrcode.makeCode(p1);
         }
     };
-    var obj = new qrGen();
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    var code =urlParams.get('code');
-    var desc =urlParams.get('desc');
-    if(code !="" && desc!=""){
-        obj.getQR(code,desc); 
-    }
+    // var obj = new qrGen();
+    // var queryString = window.location.search;
+    // var urlParams = new URLSearchParams(queryString);
+    // var code =urlParams.get('code');
+    // var desc =urlParams.get('desc');
+    // if(code !="" && desc!=""){
+    //     obj.getQR(code,desc); 
+    // }
     
 </script>
+<?php 
+echo "<h1>".$_GET["item"]."</h1>";
+
+?>
 
     
 </body>

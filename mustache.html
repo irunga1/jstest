@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplo de Mustache.js con ES6</title>
+</head>
+<body>
+  <div id="template">
+    <h1>{{title}}</h1>
+    <p>{{message}}</p>
+  </div>
+
+  <div id="output"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.min.js"></script>
+  <script type="text/javascript">
+    const template = document.getElementById('template').innerHTML;
+
+    const data = {
+      title: 'Ejemplo de Mustache.js con ES6',
+      message: 'aa'
+    };
+
+    const rendered = Mustache.render(template, data);
+
+    document.getElementById('output').innerHTML = rendered;
+    document.getElementById("template").style.display ="none";
+  </script>
+</body>
+</html>

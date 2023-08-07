@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    <title>Tareas</title>
+</head>
+
+<body>
+<!-- const dateNumber = document.getElementById("dateNumber");
+const dateText = document.getElementById("dateText");
+const dateMonth = document.getElementById("dateMonth");
+const dateYear = document.getElementById("dateYear"); -->
+
+    <div class="list roundBorder">
+        <div class="date">
+            <div class="dateRight">
+                <div id="dateNumber"></div>
+                <div>
+                    <div id="dateMonth"></div>
+                    <div id="dateYear"></div>
+                </div>
+            </div>
+            <div id="dateText"></div>
+        </div>
+        <form onsubmit="obj.addTask(event);">
+            <input id="taskText" onfocus = "obj.clearMessage()" type="text" name="taskText" autocomplete="off" placeholder="Nueva tarea" class="roundBorder">
+            <button type="submit" class="addTaskButton">+</button>
+            <button type="button" class="orderButton roundBorder" onclick="obj.renderOrderedTasks()">Ordenar</button>
+            
+        </form>
+        <button type="button" class="roundBorder greenSave" onclick="obj.saveInfo();">Guardar</button>
+        <button type="button" class="roundBorder orangeClear" onclick="obj.clear();">Borrar</button>
+        <small id="message"></small>
+        <div id="tasksContainer"></div>
+    </div>
+
+
+
+
+</body>
+<script >
+    var obj = new tasker();
+    obj.setDate();
+    window.onload=()=>{
+        obj.getInfo();
+        var tasks = document.querySelectorAll(".task");
+        tasks.forEach((it)=>{
+	        it.addEventListener("click",obj.changeTaskState)	
+        })
+    }
+</script>
+</html>

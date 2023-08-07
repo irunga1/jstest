@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet"> -->
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container ">
+            <a class="navbar-brand" href="#">[<i class="bi bi-send-fill"></i>melargodeviaje.info]</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Lugares <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Promociones</a>
+                    </li>
+                </ul>
+
+                </form>
+                <form class="form-inline my-2 my-md-0">
+
+                    <input class="form-control" type="text" placeholder="Quick Search" aria-label="Quick Search">
+                    <button class="btn btn-warning">
+                        Buscar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid first">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 info">
+                <h2 class=htTitle>
+                </h2>
+                <div class="formSearch">
+                    <form class="form-inline my-2 my-md-0 form1">
+                        <label for=""></label>
+  
+                        <select class="form-control" name="" id="">
+                            <option value="">Playa</option>
+                            <option value="">Bosque</option>
+                            <option value="">Hotel</option>
+                            <option value="">Senderismo</option>
+                            <option value="">Lago/Laguna/Rio</option>
+                            <option value="">Discoteque</option>
+                            <option value="">Sorprendeme</option>
+                        </select>
+                        <div class="form-check">
+                            <input type="checkbox" value = "selected" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Cerca de mi</label>
+                          </div>
+                        <span class="btn btn-warning" onclick="obj.getData();">
+                            Buscar
+                        </span>
+                    </form>
+
+                    <form class="form-inline my-2 my-md-0 form1">
+                        <label for=""></label>
+  
+                        <select class="form-control" name="" id="">
+                            <option value="">Guatemala Ciudad</option>
+                            <option value="">Sacatepeques</option>
+                            <option value="">Santa Rosa</option>
+                            <option value="">Quetzaltenango</option>
+                            <option value="">Peten</option>
+                            <option value="">Izabal</option>
+                            <option value="">Alta Verapaz</option>
+                        </select>
+                        <div class="form-check">
+                          </div>
+                        <span class="btn btn-warning" onclick="obj.getData();">
+                            Buscar
+                        </span>
+                    </form>
+                        
+                </div>
+                <br>
+                <div id="ItemList">
+                    <div class="row">
+                        <div class="col-md-12" id = itemContent>
+                    </div>
+                </div>
+                <div id="randomPlace" style ="display: none;">
+                    <div class="imgContainer">
+                        <img id="img1" src="" alt="">
+                        <div class="row">
+                            <hr>
+                            <div class="col-md-12 hashtags">
+                                <hr style="color: red;border: 1px solid red;">
+                                <ul class="icons">
+                                    <li><span class="info1">
+                                        <i class="bi bi-geo-alt-fill"></i> Ubicaciòn</span>
+                                    </li>
+                                    <li><span class="info1">
+                                            <i class="bi bi-sign-turn-right"></i> <span id="address"></span> </span>
+                                    </li>
+                                    <li>
+                                        <span class="info1">
+                                            <i class="bi bi-whatsapp"></i> <span id="number">---</span> </span>
+                                    </li>
+    
+                                    <li><span class="info"></span></li>
+                                    <li><span class="info"></span></li>
+                                    <li><span class="info"></span></li>
+    
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="infoContainer">
+                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio commodi aliquid sint, obcaecati placeat sunt, atque sequi fugit error pariatur quis laborum maiores numquam, esse ducimus? A recusandae autem sapiente. </p>
+                    </div>
+
+                </div>
+                <div id="searcher">
+
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <style>
+        body {
+            background-color:#eceff4;
+            
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container-fluid {
+
+            color: silver;
+        }
+
+        .htTitle {
+            text-align: center;
+        }
+
+        .info {
+            text-align: center;
+        }
+
+        .imgContainer {
+            padding: 15px;
+            border: 3px solid silver;
+            display: inline-block;
+            background-color: white;
+            color: black;
+        }
+
+        .hashtags li {
+            margin-left: ;
+            list-style-type: none;
+            /* display: inline-block; */
+            font-size: 12px;
+            margin-left: 20px;
+        }
+
+        .hashtags {
+            text-align: left;
+        }
+
+        .icons .info1 {
+            color: red;
+            font-size: 18px;
+        }
+
+        .imgContainer img {
+            /* max-width: 450px; */
+        }
+
+        .info {
+            text-align: left;
+        }
+
+        .imgContainer img {
+            /* max-width: 450px; */
+            width: 100%;
+        }
+
+        .information {
+            vertical-align: text-top;
+        }
+        .form-check {
+
+            padding-right: 10px;
+        }
+        .form1 {
+            display: inline-block;
+            vertical-align: top;
+            min-width: 240px;
+            border: 1px solid silver;
+            padding: 20px;
+            
+        }
+        .form1 select{
+            width: 100%;
+        }
+        #randomPlace{
+            display:none;
+            text-align: center;
+        }
+
+        .bg-dark {
+            background-color: #1c82e8 !important;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 99999;
+        }
+        .first{
+            margin-top: 55px;
+        } 
+        .form1 {
+            display: inline-block;
+            vertical-align: top;
+            border: 1px solid silver;
+            padding: 20px;
+            width: 40%;
+        }
+        .form-control{
+            font-size: 0.85rem;
+        }
+        .form-check-label{
+            display: inline-block;
+        }
+        .form-inline .form-check {
+            display: inline-block;
+        }
+        .form-inline label{
+            display: inline-block;
+        }
+        .formSearch {
+            text-align: center;
+        }
+        .imgContainer img {
+            max-width: 450px;
+            width: 100%;
+            max-width: 450px;
+        }
+        .infoContainer {
+            display: inline-block;
+            max-width: 50%;
+            border: 3px solid silver;
+            text-align: center;
+            background-color: white;
+            color: gray;
+            vertical-align: top;
+        }
+        div.itList {
+            display: inline-block;
+            background-color: white;
+            width: 32%;
+            min-height: 150px;
+            vertical-align: top;
+            text-align: center;
+            padding-top: 10px;
+            color: black;
+            margin-top: 0.3em;
+            padding-bottom: 10px;
+            background-color: silver;
+            margin-left: 5px;
+        }
+                
+        .iTList1 {
+            width: 45%;
+            display: inline-block;
+            font-size: 0.75em;
+        }
+        .iTList1 img {
+            width: 100%;
+            display: inline-block;
+            border: 2px solid black;
+        }
+        .iTList1 li {
+            list-style: none;
+            padding: 0%!important;
+        }
+        .iTList1 ul{
+            padding: 0;
+            text-align: left;
+            padding-left:20px;
+        }
+        .Cerca{
+            color:red;
+        }
+        .Lejos{
+            color:blue;
+        }
+        @media (max-width: 768px) {
+            div.itList {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+        }
+    </style>
+    <script>
+        class getInfo {
+            constructor(firstProp = null) { 
+                this.firstProp = firstProp
+            }
+            getData = async () => {
+                const api = await fetch("http://localhost/jstest/info.json");
+                let data = await api.json();
+                var data1 = data[0];
+                var position = await this.getPosition();                
+                if(position){
+                    // console.log(position.coords);
+                    var cords = position.coords;
+                    var coords1 = {
+                        latitud:cords.latitude,
+                        longitud:cords.longitude
+                    }                    
+                    document.getElementById("img1").src = data1.img;
+                    document.getElementById("number").innerHTML = data1.tel;
+                    document.getElementById("address").innerHTML = data1.addres;
+                    // document.getElementById("randomPlace").style.display = "block";                    
+                    var  isChecked = document.getElementById("exampleCheck1").checked;                                    
+                    var info = [];
+                    var coords2 =[];
+                    if(isChecked == true){
+                        var geo = new GeoIp();
+                        var strItems = ""
+                        var result = await  data.map( async(el)=>{
+                            // console.log(el);                        
+                            
+                            coords2 = {
+                                latitud: parseFloat(el.latitud) ,
+                                longitud: parseFloat(el.longitud)
+                            }
+                            var dist  = geo.calculate(coords1,coords2);
+                            coords2.distancia = dist *1.4;
+                            coords2.img = el.img;
+                            coords2.addres = el.addres;
+                            coords2.tel = el.tel;
+                            coords2.desc = el.desc;
+                            coords2.iscerca = (dist<50)?"Cerca":"Lejos";
+                            coords2.title = el.title;
+                            info.push(coords2);
+                            strItems +=`<div class="itList">
+                                <h4><strong>${coords2.title}</strong></h4>
+                                <div class="iTList1">
+                                    <img src="${el.img}" alt="">
+                                </div>
+                                <div class="iTList1">                                    
+                                    <ul>  
+                                        <li><strong><i class="bi bi-telephone-fill"></i>  ${el.tel}</strong> </li>
+                                        <li> <i class="bi bi-car-front-fill"></i>  ${el.addres} </li>                                        
+                                        <li> <span class ="${coords2.iscerca}"> <i class="bi bi-alarm-fill"></i> ${coords2.iscerca} </span> </li>
+                                        <li> <i class="bi bi-geo-fill"></i> Buscar en Mapa </li>
+
+                                    </ul> 
+                                </div>
+                            </div>`;
+                            document.querySelector("#itemContent").innerHTML = strItems;
+                            return info;
+                            
+                        }); 
+                        console.log(result);                      
+
+                    }
+                    else{      
+                        var strItems = ""                  
+                        var result = await data.map(async (el)=>{                                  
+                        coords2 = {
+                            latitud: parseFloat(el.latitud) ,
+                            longitud: parseFloat(el.longitud)
+                        }
+                        coords2.img = el.img;
+                        coords2.addres = el.addres;
+                        coords2.tel = el.tel;
+                        coords2.desc = el.desc;
+                        coords2.title = el.title;
+                        info.push(coords2);
+                        strItems +=`<div class="itList">
+                            <h4><strong>${coords2.title}</strong></h4>
+                            <div class="iTList1">
+                                <img src="${el.img}" alt="">
+                            </div>
+                            <div class="iTList1">                                    
+                                <ul>  
+                                    <li><strong><i class="bi bi-telephone-fill"></i>  ${el.tel}</strong> </li>
+                                    <li> <i class="bi bi-car-front-fill"></i>  ${el.addres} </li>
+                                    <li> <i class="bi bi-geo-fill"></i> Buscar en Mapa </li>
+
+                                </ul> 
+                            </div>
+                        </div>`;
+                        document.querySelector("#itemContent").innerHTML = strItems;
+                        return info;
+                            
+                        }); 
+                        console.log(result);  
+                    }
+                }
+
+
+            }
+            async getPosition() {
+                try {
+                    const position = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject);
+                    });
+                    return position;
+                } 
+                catch (error) {
+                    console.error(`Error al obtener la posición: ${error.message}`);
+                    return null;
+                }
+            }
+        }
+
+
+
+
+        class GeoIp  {
+            constructor(firstProp = null) {
+                this.firstProp = firstProp
+            }
+            getInfo = async ()=>{
+                var url = "https://api.ipgeolocation.io/ipgeo?apiKey=49de5d8c5c114887bf9a32e6146f12bc";
+                var api = await fetch(url);
+                data = await api.json();
+
+            }
+            calculate = (punto1, punto2)=>{
+                const radioTierra = 6371; // Radio de la Tierra en kilómetros
+                const lat1 = punto1.latitud;
+                const lon1 = punto1.longitud;
+                const lat2 = punto2.latitud;
+                const lon2 = punto2.longitud;
+                const dLat = (lat2 - lat1) * Math.PI / 180;
+                const dLon = (lon2 - lon1) * Math.PI / 180;
+                const a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                const distancia = radioTierra * c;
+                return distancia;
+            }
+            
+        }
+        var obj = new getInfo();
+        var obj2 = new GeoIp();
+        // var data =  obj2.getInfo();
+        // pana = {latitud:15.32008,longitud:-91.47045}
+        // ciudad = {latitud:14.5468039,longitud:-90.52618}
+        // otro = {latitud:14.551396,longitud:-90.456855}
+        // var dato1 = obj2.calculate(pana,ciudad);
+        // var dato2 = obj2.calculate(otro,ciudad);
+        // console.log(dato1);
+        // console.log(dato2);
+
+
+
+        // obj.getData();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consumir API de OpenAI</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function getOpenAIResponse(prompt) {
+      const apiKey = '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'; // Reemplaza 'TU_API_KEY' con tu clave de API de OpenAI
+      const url = 'https://api.openai.com/v1/engines/davinci/completions';
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      };
+      const data = {
+        'prompt': prompt,
+        'temperature': 0.7,
+        'max_tokens': 100
+      };
+
+      try {
+        const response = await axios.post(url, data, { headers });
+        return response.data.choices[0].text;
+      } catch (error) {
+        console.error('Error al llamar a la API de OpenAI:', error.message);
+        return null;
+      }
+    }
+
+    const prompt = "Cuéntame una historia sobre un viaje espacial.";
+    getOpenAIResponse(prompt)
+      .then(response => {
+        if (response) {
+          console.log("Respuesta del modelo:");
+          console.log(response);
+        } else {
+          console.log("No se obtuvo respuesta del modelo.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error.message);
+      });
+  </script>
+</body>
+</html>
