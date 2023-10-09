@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot con LocalStorage y Procesamiento de Lenguaje Natural</title>
+</head>
+
+<body>
+    <div id="chat-container">
+        <div id="chat-log"></div>
+        <input type="text" id="user-input" placeholder="Escribe aquí...">
+    </div>
+
+    <script>
+        // const chatLog = document.getElementById('chat-log');
+        // const userInput = document.getElementById('user-input');
+
+        // let knowledge = JSON.parse(localStorage.getItem('knowledge')) || {};
+
+        // function addMessage(sender, message) {
+        //   const messageElement = document.createElement('div');
+        //   messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        //   chatLog.appendChild(messageElement);
+        // }
+        // function handleUserInput() {
+        //   const inputText = userInput.value;
+        //   addMessage('Tú', inputText);
+
+        //   const response = searchResponse(inputText);
+
+        //   if (response) {
+        //     addMessage('Chatbot', response);
+        //   } else {
+        //     addMessage('Chatbot', "Lo siento, no sé cómo responder a eso.");
+        //     const newResponse = prompt("No sé la respuesta. ¿Cómo debo responder?");
+        //     knowledge[inputText] = newResponse;
+        //     localStorage.setItem('knowledge', JSON.stringify(knowledge));
+        //   }
+
+        //   userInput.value = '';
+        // }
+
+        // var searchResponse = (inputText = null)=>{
+        //     let keywords = document.getElementById("user-input").value.split(' ');
+        //     let keys = Object.keys(knowledge);
+        //     let nProbs = [];
+        //     let counter =0; 
+        //     for(let i in keywords){
+        //         let word = keywords[i];
+        //         console.log(word);
+        //         let probs = keys.forEach((item)=>{                            
+        //         item2 = item.split(" ");
+        //             item2.forEach((el)=>{
+        //                 if(typeof nProbs[item] ==="undefined"){
+        //                     nProbs[item] = "";
+        //                 }      
+        //                 // toLowerCase             
+        //                 if(word.toLowerCase() == el.toLowerCase()){
+        //                     nProbs[item]+="*";
+        //                 }                    
+        //             }) 
+        //         });
+
+        //     }
+        //     let respuesta = [];
+        //     for(i in nProbs){
+        //         // nProbs[i].length
+        //         if(nProbs[i].length >0){
+        //             let temp ={
+        //                 "largo":nProbs[i].length, 
+        //                 "pregunta":i
+
+        //             };
+        //             respuesta[nProbs[i].length] = temp;
+        //         }            
+        //     }
+        //     respuesta = respuesta.reverse();
+        //     if(respuesta.length >0){
+        //         let bestMatch = respuesta[0].pregunta;
+        //         console.log(respuesta[0]);    
+        //         return bestMatch ? knowledge[bestMatch] : null;
+        //     }
+        //     else{
+        //         return null;
+        //     }
+        // }
+
+        // userInput.addEventListener('keydown', (event) => {
+        //   if (event.key === 'Enter') {
+        //     handleUserInput();
+        //   }
+        // });
+
+        class Chatbot {
+            constructor() {
+                this.chatLog = document.getElementById('chat-log');
+                this.userInput = document.getElementById('user-input');
+                this.knowledge = JSON.parse(localStorage.getItem('knowledge')) || {};
+                this.userInput.addEventListener('keydown', this.handleUserInput.bind(this));
+            }
+
+            addMessage(sender, message) {
+                const messageElement = document.createElement('div');
+                messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+                this.chatLog.appendChild(messageElement);
+            }
+
+            searchResponse(inputText) {
+                let keywords = document.getElementById("user-input").value.split(' ');
+                let keys = Object.keys(this.knowledge);
+                let nProbs = [];
+                let counter =0; 
+                for(let i in keywords){
+                    let word = keywords[i];
+                    console.log(word);
+                    let probs = keys.forEach((item)=>{                            
+                    let item2 = item.split(" ");
+                        item2.forEach((el)=>{
+                            if(typeof nProbs[item] ==="undefined"){
+                                nProbs[item] = "";
+                            }      
+                            // toLowerCase             
+                            if(word.toLowerCase() == el.toLowerCase()){
+                                nProbs[item]+="*";
+                            }                    
+                        }) 
+                    });
+
+                }
+                let respuesta = [];
+                for(let i in nProbs){
+                    // nProbs[i].length
+                    if(nProbs[i].length >0){
+                        let temp ={
+                            "largo":nProbs[i].length, 
+                            "pregunta":i
+
+                        };
+                        respuesta[nProbs[i].length] = temp;
+                    }            
+                }
+                respuesta = respuesta.reverse();
+                if(respuesta.length >0){
+                    let bestMatch = respuesta[0].pregunta;
+                    console.log(respuesta[0]);    
+                    return bestMatch ? this.knowledge[bestMatch] : null;
+                }
+                else{
+                    return null;
+                }
+                // const keywords = inputText.toLowerCase().split(' ');
+                // const keys = Object.keys(this.knowledge);
+                // const nProbs = {};
+
+                // for (const word of keywords) {
+                //     for (const item of keys) {
+                //         const itemWords = item.toLowerCase().split(' ');
+
+                //         if (!nProbs[item]) {
+                //             nProbs[item] = '';
+                //         }
+
+                //         for (const el of itemWords) {
+                //             if (word === el) {
+                //                 nProbs[item] += '*';
+                //             }
+                //         }
+                //     }
+                // }
+
+                // const respuesta = [];
+                // for (const i in nProbs) {
+                //     if (nProbs[i].length > 0) {
+                //         respuesta[nProbs[i].length] = {
+                //             largo: nProbs[i].length,
+                //             pregunta: i
+                //         };
+                //     }
+                // }
+
+                // const sortedRespuesta = respuesta.reverse();
+                // if (sortedRespuesta.length > 0) {
+                //     const bestMatch = sortedRespuesta[0].pregunta;
+                //     return bestMatch ? this.knowledge[bestMatch] : null;
+                // } else {
+                //     return null;
+                // }
+            }
+
+            handleUserInput(event) {
+                // modificar esta chiva para recibir mas parametros
+                if (event.key === 'Enter') {
+                    const inputText = this.userInput.value;
+                    this.addMessage('Tú', inputText);
+
+                    const response = this.searchResponse(inputText);
+
+                    if (response) {
+                        this.addMessage('Chatbot', response);
+                    } else {
+                        this.addMessage('Chatbot', "Lo siento, no sé cómo responder a eso.");
+                        const newResponse = prompt("No sé la respuesta. ¿Cómo debo responder?");
+                        this.knowledge[inputText] = newResponse;
+                        localStorage.setItem('knowledge', JSON.stringify(this.knowledge));
+                    }
+
+                    this.userInput.value = '';
+                }
+            }
+        }
+
+        const chatbot = new Chatbot();
+    </script>
+</body>
+
+</html>
