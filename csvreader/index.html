@@ -13,14 +13,21 @@
                 this.path = path
             }
             reader = async()=>{
-                let path = this.path;
-                let info = await fetch(path);
-                let data  = await info.text();
-                console.log(data);
+                try {
+                    let path = this.path;
+                    let info = await fetch(path);
+                    let data  = await info.text();
+                    console.log(data);                    
+                } catch (error) {
+                    console.log("error");
+                    console.log(error);
+                }
+
             }
         }
-        const obj = new csvreader("info.csv");
+        const obj = new csvreader("info1.csv");
         obj.reader();
     </script>
 </body>
 </html>
+

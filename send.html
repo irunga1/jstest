@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://wa.me/50242142727/?text=helloworld">enviar</a>
+    <a href="https://wa.me/50242142727/?text=helloworld&source=https://concepto.de/wp-content/uploads/2022/05/meme-e1653582496114-800x400.jpg">enviar</a>
+    <h1>Notificaciones</h1>
+    <button id="id1">Notificar..</button>
+    <button id="id2">Ver Notificaciones</button>
+    <script>
+        const notificarBtn = document.querySelector("#id1");
+        notificarBtn.addEventListener("click",()=>{
+            Notification.requestPermission().then((resultado)=>{
+                console.log("respuesta:",resultado);
+                alert(resultado);
+
+            })
+        });
+        const verNotBtn = document.querySelector("#id2");
+        verNotBtn.addEventListener("click",()=>{
+            console.log("entro al click")
+
+            if(Notification.permission ==="denied"){
+                let not =  new Notification("esta es una notificacion",{
+                    icon:"https://www.shareicon.net/data/128x128/2015/09/01/94140_development_512x512.png",
+                    body:"otro texto"
+                });
+                // not.onclick = function(){
+                //     window.open("http://www.google.com.gt");
+                // }
+                not.addEventListener("click",()=>{
+                    window.open("http://www.google.com.gt");
+                })
+            
+            }
+            else{
+                let not =  new Notification("esta es una notificacion",{
+                    icon:"https://www.shareicon.net/data/128x128/2015/09/01/94140_development_512x512.png",
+                    body:"otro texto"
+                });
+                // not.onclick = function(){
+                //     window.open("http://www.google.com.gt");
+                // }
+                not.addEventListener("click",()=>{
+                    window.open("http://www.google.com.gt"); 
+                })
+            }
+        })
+    </script>
+    
+</body>
+</html>
