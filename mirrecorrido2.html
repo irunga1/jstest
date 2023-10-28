@@ -24,12 +24,15 @@
 </head>
 
 <body>
-    <div id="map" style="width: 500px; height: 400px;"></div>
+    <button id="refresh">Refrescar</button>
+    <hr>
+    <div id="map" style="width: 600px; height: 600px;"></div>
+ 
 
     <script type="text/javascript">
         var url = "https://personapi-e7s3.onrender.com/entrega/getall";
         async function getInfo() {
-                var coord = await $.ajax({
+            var coord = await $.ajax({
                 url: url,
                 type: 'GET'
             });
@@ -48,12 +51,14 @@
                 let tmp = ["recorrido",tempo[i].lat,tempo[i].lng,i];
                 tempo2[i]= tmp;
             }
-            console.log(tempo2);
+            let gip = new GeoIp();
+            let loc = await gip.getData();
             var coord1 = tempo[0];
             var coord2 = tempo;
             var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
-            center: new google.maps.LatLng(14.6581379, -90.4946733),
+            // center: new google.maps.LatLng(14.6581379, -90.4946733),
+            center: new google.maps.LatLng(loc[1], loc[0]),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
@@ -79,8 +84,26 @@
 
         getInfo();
         
-
-        
+        class GeoIp {
+            constructor(firstProp = null) {
+                this.firstProp = firstProp
+            }
+            getData = async()=>{
+                const url = "https://api.ipgeolocation.io/ipgeo?apiKey=49de5d8c5c114887bf9a32e6146f12bc";
+                let api = await fetch(url);
+                let data = await api.json();
+                let geoLoc = await [data.longitude,data.latitude];
+                console.log(data);
+                console.log(geoLoc);
+                return await geoLoc;
+                
+                // BK22WIFICM
+            }
+        }
+        const  refresh  = document.getElementById("refresh");
+        refresh.addEventListener("click",()=>{
+            getInfo();
+        })
     </script>
 </body>
 

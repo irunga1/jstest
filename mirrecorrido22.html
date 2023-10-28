@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps Multiple Markers</title>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDzBdWSIsJw6KGmpGTbGLtJru6GrHwf1b4" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #map {
+            width: 500px;
+            height: 400px;
+        }
+
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <button id="refreshMapButton">Actualizar Mapa</button>
+
+    <script type="text/javascript">
+        var map;
+        var markers = []; // Arreglo para almacenar los marcadores
+
+        // Función para inicializar el mapa
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: new google.maps.LatLng(14.6581379, -90.4946733),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            loadMarkers(); // Cargar los marcadores inicialmente
+        }
+
+        // Función para cargar los marcadores
+        function async loadMarkers() {
+            // ... Tu código existente para cargar los marcadores
+            var coord = await $.ajax({
+                url: url,
+                type: 'GET'
+            });
+            
+            a =  coord.info;
+            
+            var tempo = [];
+            for(i = 0;i<a.length;i++){
+                var lat = parseFloat(a[i].lat);
+                var lng = parseFloat(a[i].lon);
+                let obj = {"lat":lat,"lng":lng};
+                tempo[i] = obj;
+            }
+            var tempo2 =[];
+            for(i = 0;i<tempo.length;i++){
+                let tmp = ["recorrido",tempo[i].lat,tempo[i].lng,i];
+                tempo2[i]= tmp;
+            }
+
+            // Limpia los marcadores anteriores
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            markers = [];
+
+            // Agrega nuevos marcadores o cambia la ubicación del mapa
+            for (i = 0; i < tempo2.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(tempo2[i][1], tempo2[i][2]),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(tempo2[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                markers.push(marker); // Almacena el nuevo marcador en el arreglo
+            }
+            return await null;
+        }
+
+        // Evento click en el botón de actualización
+        document.getElementById('refreshMapButton').addEventListener('click', function () {
+            loadMarkers(); // Cargar los marcadores nuevamente
+        });
+
+        // Llama a la función de inicialización del mapa
+        initMap();
+    </script>
+</body>
+
+</html>
